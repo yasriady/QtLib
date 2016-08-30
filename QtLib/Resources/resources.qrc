@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>png_128/notification-display-brightness.png</file>
+        <file>svg_96/cs-keyboard.svg</file>
+        <file>png_48/gnome-photo-printer.png</file>
+        <file>png_128/fileprint.png</file>
+        <file>png_128/gtk-print-preview.png</file>
+        <file>png_128/gtk-print.png</file>
+        <file>png_128/printer-dot_matrix.png</file>
+        <file>png_48/tsclient.png</file>
+        <file>png_16/checkbox.png</file>
+        <file>png_16/connect.png</file>
+        <file>png_16/disconnect.png</file>
+        <file>png_16/edit-delete.png</file>
+        <file>png_16/network-connect.png</file>
+        <file>png_16/network-disconnect.png</file>
+        <file>png_16/process-stop.png</file>
+        <file>png_16/system-log-out.png</file>
+        <file>png_16/system-shutdown.png</file>
+        <file>png_16/window-close.png</file>
+        <file>png_64/edit-clear-3.png</file>
+        <file>png_64/help-about-3.png</file>
+        <file>png_64/notification-display-brightness.png</file>
+        <file>png_64/preferences-desktop-display.png</file>
+        <file>png_64/window-close-4.png</file>
+        <file>png_16/network-server-database_1.png</file>
+        <file>png_16/network-server-database.png</file>
+        <file>png_16/office-database.png</file>
+        <file>png_16/server-database.png</file>
+        <file>png_32/script_add.png</file>
+        <file>png_32/script_delete.png</file>
+        <file>png_32/search_minus.png</file>
+        <file>png_32/search_plus.png</file>
+        <file>png_32/shape_square_add.png</file>
+        <file>png_32/shape_square_delete.png</file>
+        <file>png_32/style_add.png</file>
+        <file>png_32/style_delete.png</file>
+    </qresource>
+    <qresource prefix="/backgnd"/>
+    <qresource prefix="/new/prefix1"/>
+    <qresource prefix="/new/prefix2"/>
+    <qresource prefix="/new/prefix3"/>
+</RCC>
