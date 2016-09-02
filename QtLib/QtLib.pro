@@ -41,7 +41,11 @@ SOURCES += qtlib.cpp \
     Logger/dlogger.cpp \
     ScrollingText/scrollingtext.cpp \
     Widget/dwidget.cpp \
-    ScrollingText/scrolltext.cpp
+    ScrollingText/scrolltext.cpp \
+    CallerSound/dcallersounddialog.cpp \
+    CallerSoundAlsa/dcallersoundworker.cpp \
+    CallerSoundAlsa/dcallersoundalsa.cpp \
+    CallerSoundAlsa/wavfile.cpp
 
 HEADERS += qtlib.h\
         qtlib_global.h \
@@ -87,7 +91,12 @@ HEADERS += qtlib.h\
     Inc/Config \
     Widget/dwidget.h \
     Inc/Widget \
-    ScrollingText/scrolltext.h
+    ScrollingText/scrolltext.h \
+    CallerSound/dcallersounddialog.h \
+    CallerSoundAlsa/dcallersoundworker.h \
+    Inc/CallerSoundAlsa \
+    CallerSoundAlsa/dcallersoundalsa.h \
+    CallerSoundAlsa/wavfile.h
 
 unix {
     target.path = /usr/lib
@@ -108,7 +117,8 @@ FORMS += \
     Media/dmedia.ui \
     Dialog/ddialog.ui \
     Testing/mainwindowtesting.ui \
-    Logger/dlogger.ui
+    Logger/dlogger.ui \
+    CallerSound/dcallersounddialog.ui
 
 DISTFILES += \
     Stylesheet/dark-theme.qss \
@@ -128,3 +138,5 @@ else:unix:!macx: LIBS += -L$$OUT_PWD/../QtDB/ -lQtDB
 
 INCLUDEPATH += $$PWD/../QtDB
 DEPENDPATH += $$PWD/../QtDB
+
+unix:!macx: LIBS += -lasound

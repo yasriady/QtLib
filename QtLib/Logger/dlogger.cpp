@@ -7,6 +7,7 @@ DLogger::DLogger(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Ddy: GOT ERROR in my raspi2
     mkCONFIX;
     bool redirect = confx->boolean( KEY("redirect"), true );
     if( redirect ) {

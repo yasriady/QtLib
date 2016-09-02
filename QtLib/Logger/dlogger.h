@@ -13,7 +13,7 @@
 #include "q_debugstream.h"
 #include <dsettings.h>
 
-#define LOGGER(msg)      ui->logger->showResult(msg)
+//#define LOGGER(msg)      ui->logger->showResult(msg)
 
 namespace Ui {
 class DLogger;
