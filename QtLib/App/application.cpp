@@ -3,9 +3,14 @@ Application::Application(int &argc, char **argv, int)
     : QApplication( argc, argv )
 {
     // init directory, make Extra dir
-    const QString &dirPath = QString( EXTRADIR );
-    QDir *dir = new QDir(dirPath);
-    if( !dir->exists() ) dir->mkdir(dirPath);
+    //const QString &dirPath = QString( EXTRADIR );
+    QDir *dir = new QDir(EXTRADIR);
+    if( !dir->exists() )
+    {
+        dir->mkdir(EXTRADIR);
+        dir->mkdir(qssDIR);
+        dir->mkdir(AUDIODIR);
+    }
 
 //    mkCONFIX;
 //    // stylesheet

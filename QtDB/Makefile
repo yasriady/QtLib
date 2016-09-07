@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQTDB_LIBRARY -DQT_QML_DEBUG -DQT_SQL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -I../QtConfig -I../QtConfig -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../QtConfig -I../QtConfig -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = QtDB1.0.0
 DISTDIR = /home/dedy/QtProjects/QtLib/QtDB/.tmp/QtDB1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/lib -shared -Wl,-soname,libQtDB.so.1
-LIBS          = $(SUBLIBS) -L/home/dedy/QtProjects/build-Queue-Desktop_Qt_5_7_0_GCC_64bit-Debug/../QtLib/QtDB/../QtConfig/ -lQtConfig -L/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/lib -lQt5Sql -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/dedy/QtProjects/QtLib/QtDB/../QtConfig/ -lQtConfig -L/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/lib -lQt5Sql -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -723,7 +723,7 @@ moc_dbmanager.cpp: qtdb_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql/qsqlerror.h \
 		dbmanager.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtDB -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtConfig -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dbmanager.h -o moc_dbmanager.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtDB -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtConfig -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dbmanager.h -o moc_dbmanager.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQTCONFIG_LIBRARY -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -52,8 +52,7 @@ SOURCES       = qtconfig.cpp \
 		dsettings.cpp 
 OBJECTS       = qtconfig.o \
 		dsettings.o
-DIST          = Config \
-		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
+DIST          = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/common/unix.conf \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/common/linux.conf \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/common/sanitize.conf \

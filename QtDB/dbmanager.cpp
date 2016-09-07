@@ -14,11 +14,11 @@ DBManager::DBManager()
 //    const QString &hostname         = confg->value("DB/SRV").toString();     //"192.168.1.41"
 //    const QString &user             = confg->value("DB/USER").toString();    //"QueueUser"
 //    const QString &passwd           = confg->value("DB/PWD").toString();     //"QueueUserOnly"
-    const QString &driver           = confg->string( KEY("driver") );
-    const QString &dbname           = confg->string( KEY("dbname") );
-    const QString &hostname         = confg->string( KEY("server") );
-    const QString &user             = confg->string( KEY("username") );
-    const QString &passwd           = confg->string( KEY("password") );
+    const QString &driver           = confg->string( KEY2("driver") );
+    const QString &dbname           = confg->string( KEY2("dbname") );
+    const QString &hostname         = confg->string( KEY2("server") );
+    const QString &user             = confg->string( KEY2("username") );
+    const QString &passwd           = confg->string( KEY2("password") );
 
     SQLDRV sqlDrv = SQLDRV::NODRV;
 
@@ -67,7 +67,7 @@ DBManager::DBManager()
         //qDebug() << "Database: connection ok";
     }
 
-    qDebug() << m_db.lastError().text();
+    //qDebug() << m_db.lastError().text();
 
 }
 
@@ -88,7 +88,7 @@ QString DBManager::getText(const QString &column, const QString &table, const QS
     //query.bindValue( ":table", "ListedNode" );
     //query.bindValue( ":where", where );
 
-    query.exec();
+    query.exec(sql);
     if( query.next() )
     {
         value = query.value(column).toString();
@@ -180,6 +180,7 @@ void DBManager::updateRecord(const QString &sql)
 
 void DBManager::TestDB()
 {
+    qDebug() << __PRETTY_FUNCTION__;
 }
 
 bool DBManager::isConnected()

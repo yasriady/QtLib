@@ -1,6 +1,7 @@
 #include "scrolltext.h"
 #include <QPainter>
 
+// NOT_RUNNING_YET
 
 ScrollText::ScrollText(QWidget *parent) :
     QWidget(parent), scrollPos(0)

@@ -29,13 +29,13 @@ public:
 
 private:
     Ui::DMainWindow *ui;
-    QString m_windowName;
+    void setStyleSheet(QString styleSheet="");
 
 protected:
-    void init();
+    QString m_windowName;
+    virtual void customInit() = 0;
     virtual void closeEvent(QCloseEvent *event);
     virtual void showEvent(QShowEvent *event);
-    void setStyleSheet(QString styleSheet="");
 
 
 };

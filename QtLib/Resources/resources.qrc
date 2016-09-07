@@ -36,8 +36,13 @@
         <file>png_32/style_add.png</file>
         <file>png_32/style_delete.png</file>
     </qresource>
-    <qresource prefix="/backgnd"/>
-    <qresource prefix="/new/prefix1"/>
-    <qresource prefix="/new/prefix2"/>
-    <qresource prefix="/new/prefix3"/>
+    <qresource prefix="/backgnd">
+        <file>Background/c-plus-plus-programing-wallpaper.jpg</file>
+        <file>Background/du1.jpg</file>
+        <file>Background/High-Quality-Birds-Wallpapers_b.jpg</file>
+        <file>Background/programmingoop_wallpaper_black_by_hexeno.png</file>
+        <file>Background/ykDIJIL.jpg</file>
+        <file>Background/2169_body_1_2.jpg</file>
+        <file>Background/Barelang-Bridge.jpg</file>
+    </qresource>
 </RCC>

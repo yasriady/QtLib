@@ -8,13 +8,13 @@ DLogger::DLogger(QWidget *parent) :
     ui->setupUi(this);
 
     // Ddy: GOT ERROR in my raspi2
-    mkCONFIX;
-    bool redirect = confx->boolean( KEY("redirect"), true );
-    if( redirect ) {
-        // redirect std::cout, qDebug(), std::cerf() to textEdit
-        new Q_DebugStream( std::cout, ui->textEdit );   //Redirect Console output to QTextEdit
-        Q_DebugStream::registerQDebugMessageHandler();  //Redirect qDebug() output to QTextEdit
-    }
+//    mkCONFIX;
+//    bool redirect = confx->boolean( KEY("redirect"), true );
+//    if( redirect ) {
+//        // redirect std::cout, qDebug(), std::cerf() to textEdit
+//        new Q_DebugStream( std::cout, ui->textEdit );   //Redirect Console output to QTextEdit
+//        Q_DebugStream::registerQDebugMessageHandler();  //Redirect qDebug() output to QTextEdit
+//    }
 }
 
 DLogger::~DLogger()

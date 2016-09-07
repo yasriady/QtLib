@@ -19,14 +19,14 @@ void DLabel::paintEvent(QPaintEvent *event)
     float xFactor = drawRect.width() / fontBoundRect.width();
     float yFactor = drawRect.height() / fontBoundRect.height();
 
-    float factor;
+    float factor = xFactor < yFactor ? xFactor : yFactor;
     if( m_yFactor ) {
-        factor = yFactor * 0.90;
+        factor = yFactor;// * 0.90;
     } else if( m_xFactor ) {
-        factor = xFactor * 1.00;
+        factor = xFactor;// * 1.00;
     } else {
-        factor = xFactor < yFactor ? xFactor : yFactor;
-        factor =  factor * 1.0;
+        //factor = xFactor < yFactor ? xFactor : yFactor;
+        //factor =  factor * 1.0;
     }
 
     QFont f = painter.font();
@@ -40,10 +40,19 @@ void DLabel::paintEvent(QPaintEvent *event)
 
 }
 
-void DLabel::showEvent(QShowEvent */*event*/)
+void DLabel::showEvent(QShowEvent *event)
 {
+    QLabel::showEvent(event);
+
+    // custom init goes here ...
+
     m_xFactor = property("xFactor").toBool();
     m_yFactor = property("yFactor").toBool();
+
+//    mkCONFIX;
+//    const QString &text = objectName();
+//    __PF(text);
+
 }
 
 void DLabel::setText(const QString &text)
@@ -51,6 +60,7 @@ void DLabel::setText(const QString &text)
     m_text = text;
     QLabel::setText(text);
     clear();
+    update();
 }
 
 QString DLabel::text() const
@@ -59,8 +69,4 @@ QString DLabel::text() const
     return txt;
 }
 
-void DLabel::setPixmapFile(const QString &filename)
-{__PF(filename);
-    const QPixmap &pixmap( EXTRADIR + filename);
-    QLabel::setPixmap(pixmap);
-}
+

@@ -11,7 +11,7 @@
 
 #include "qtdb_global.h"
 #include <QVariant>
-#include <def.h>
+#include "../QtConfig/def.h"
 #include <QtDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -20,7 +20,7 @@
 #include <QVector>
 #include <QJsonObject>
 #include <QDir>
-#include "dsettings.h"
+#include "../QtConfig/dsettings.h"
 #include <QSqlError>
 #include <QMetaObject>
 
@@ -65,7 +65,6 @@ public:
 
     void TestDB();
     bool isConnected();
-
     const QString getTaxonomy( const QString &id, const uint8_t &code=0 );
 
 

@@ -1,1 +1,3 @@
 #include <ScrollingText/scrollingtext.h>
+#include <ScrollingText/scrolltext.h>
+#include <ScrollingText/drunningtext.h>

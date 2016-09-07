@@ -1,6 +1,8 @@
 #include "scrollingtext.h"
 //#include "ui_scrollingtext.h"
 
+// DEPRECATED class
+
 ScrollingText::ScrollingText(QWidget *parent) :
     DLabel(parent)//, pos_(0)
 {
@@ -64,12 +66,15 @@ void ScrollingText::showEvent(QShowEvent *event)
     m_show = confx->boolean( KEY( objectName() + "_show" ), true );
 
     pos_ = 0;
-    m_text = confg->string( KEY( objectName() + "_text" ), "RunningText ..................    " );
-    const int &padQty = confx->integr( KEY( objectName() + "_padQty"), 5);
+    m_text = confg->string( KEY( objectName() + "_text" ), "RunningText .................." );
+    const int &padQty = confx->integr( KEY( objectName() + "_padQty"), 25);
     m_timeout = confx->integr( KEY( objectName() + "_timer"), 350);
-    setText(m_text);
-    QString pad( padQty, ' ' );
-    actual_text_ = m_text + pad;
+    //setText(m_text);
+    QString pad(padQty, ' ');
+    m_pad = pad;
+    m_text = m_text + pad;
+    //actual_text_ = m_text + pad;
+    //setText(m_text);
     if( m_started )
         startRunningText();
     if( !m_show )
@@ -93,6 +98,7 @@ void ScrollingText::refreshText()
 void ScrollingText::setText(const QString &text)
 {
     m_text= text;
+    actual_text_ = m_text + m_pad;
     DLabel::setText(text);
 }
 
@@ -101,3 +107,31 @@ void ScrollingText::setDb(DBManager *db)
     m_db = db;
     refreshText();
 }
+
+
+
+//class MarqueeLabel : public QLabel {
+// public:
+//  explicit MarqueeLabel(const QString &text) : QLabel(text), pos_(0) {
+//    QString pad(25, ' ');
+//    actual_text_ = text + pad;
+//    startTimer(100);
+//  }
+
+//protected:
+//  void timerEvent(QTimerEvent *) {
+//    pos_ = ++pos_ % actual_text_.length();
+//    setText(actual_text_.mid(pos_).append(actual_text_.left(pos_)));
+//  }
+
+//private:
+//  QString actual_text_;
+//  int pos_;
+//};
+
+//int main(int argc, char *argv[]) {
+//    QApplication a(argc, argv);
+//    MarqueeLabel lbl("WidgetMarqueeLabel");
+//    lbl.show();
+//    return a.exec();
+//}

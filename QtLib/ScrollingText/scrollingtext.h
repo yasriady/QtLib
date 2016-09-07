@@ -37,6 +37,7 @@ protected:
     virtual void showEvent(QShowEvent *event);
 
 private:
+    QString m_pad;
     QString actual_text_;
     int pos_;
     bool m_started;

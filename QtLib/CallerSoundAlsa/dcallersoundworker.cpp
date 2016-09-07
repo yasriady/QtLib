@@ -150,7 +150,7 @@ void DCallerSoundWorker::playFileList()
 
         if( QFile::exists( m_fileName ) )
         {
-            qDebug( QString("Now playing %1").arg(m_fileName).toUtf8() );
+            //qDebug( QString("Now playing %1").arg(m_fileName).toUtf8() );
             playWav(  m_fileName.toUtf8().data() );
         } else
         {

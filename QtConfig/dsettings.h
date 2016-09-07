@@ -17,17 +17,15 @@
 #include <QMetaObject>
 #include <QFile>
 
-#define GEOMETRY            CLASSNAME + "_" + property("windowName").toString() + "_geometry"
-#define STATE               CLASSNAME + "_" + property("windowName").toString() + "_state"
+#define CONFIGFILE                      APPDIR + SEP + "Extra" + SEP + APPNAME + ".ini"     //"config.ini"
+#define CONFIXFILE                      APPDIR + SEP + "Extra" + SEP + APPNAME + ".inx"     //"config.inx"
 
-//#define PRIVATESETTING      APPDIR + SEP + "Extra" + SEP + "setting.inx"
-#define CONFIGFILE          APPDIR + SEP + "Extra" + SEP + "config.ini"
-#define CONFIXFILE          APPDIR + SEP + "Extra" + SEP + "config.inx"
+#define mkCONFIX                        DSettings *confx = new DSettings(CONFIXFILE)
+#define mkCONFIG                        DSettings *confg = new DSettings(CONFIGFILE)
+#define KEY(expr)                       QString( objectName() ) + "/" + expr
+#define KEY2(expr)                      QString( metaObject()->className() ) + "/" + expr   // used by DBManager only
 
-//#define mkSETTING           DSettings *setting = new DSettings(PRIVATESETTING)
-#define mkCONFIX            DSettings *confx = new DSettings(CONFIXFILE)
-#define mkCONFIG            DSettings *confg = new DSettings(CONFIGFILE)
-#define KEY(expr)           QString::fromUtf8( metaObject()->className() ) + "/" + expr
+#define SHOWME(expr)                    mkCONFIX; bool show = confx->boolean( KEY(expr), true );    if( !show ) hide();
 
 class QTCONFIGSHARED_EXPORT DSettings : public QSettings
 {

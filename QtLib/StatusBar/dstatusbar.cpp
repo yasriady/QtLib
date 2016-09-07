@@ -4,5 +4,5 @@
 DStatusBar::DStatusBar(QWidget *parent)
     : QStatusBar(parent)
 {
-
+    SHOWME(__FUNCTION__);
 }

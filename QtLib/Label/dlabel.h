@@ -23,19 +23,16 @@ class QTLIBSHARED_EXPORT DLabel : public QLabel
 public:
     explicit DLabel(QWidget *parent=Q_NULLPTR, Qt::WindowFlags f=Qt::WindowFlags());
 
-private:
+protected:
     QString m_text;
     bool m_xFactor, m_yFactor;
-
-protected:
     virtual void paintEvent(QPaintEvent *event);
     virtual void showEvent(QShowEvent *event);
 
 public slots:
-    virtual void setText(const QString &text);
+    void setText(const QString &text);
     QString text() const;
 
-    void setPixmapFile(const QString &filename);
 };
 
 #endif // DLABEL_H

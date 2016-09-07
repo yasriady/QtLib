@@ -13,6 +13,7 @@
 #include <QWidget>
 #include <Inc/Config>
 #include <Inc/Object>
+#include <Inc/Setting>
 
 class DWidget : public QWidget, public DObject
 {
@@ -20,10 +21,14 @@ class DWidget : public QWidget, public DObject
 public:
     explicit DWidget(QWidget* parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
 
+    void setStyleSheet(QString styleSheet="");
+
 protected:
     QString m_windowName;
-    void init();
-    void setStyleSheet(QString styleSheet="");
+    virtual void customInit() = 0;
+    void showEvent(QShowEvent *event);
+    virtual void closeEvent(QCloseEvent *event);
+
 };
 
 #endif // DWIDGET_H

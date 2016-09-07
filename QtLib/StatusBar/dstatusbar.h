@@ -11,6 +11,7 @@
 
 #include "qtlib_global.h"
 #include <QStatusBar>
+#include <Inc/Setting>
 
 class QTLIBSHARED_EXPORT DStatusBar : public QStatusBar
 {

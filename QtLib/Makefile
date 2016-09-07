@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQTLIB_LIBRARY -DQT_QML_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I. -I../QtConfig -I../QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../QtConfig -I../QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = QtLib1.0.0
 DISTDIR = /home/dedy/QtProjects/QtLib/QtLib/.tmp/QtLib1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/lib -shared -Wl,-soname,libQtLib.so.1
-LIBS          = $(SUBLIBS) -L/home/dedy/QtProjects/build-Queue-Desktop_Qt_5_7_0_GCC_64bit-Debug/../QtLib/QtLib/../QtConfig/ -lQtConfig -L/home/dedy/QtProjects/build-Queue-Desktop_Qt_5_7_0_GCC_64bit-Debug/../QtLib/QtLib/../QtDB/ -lQtDB -lasound -L/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/lib -lQt5PrintSupport -L/usr/lib64 -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Sql -lQt5Network -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/dedy/QtProjects/QtLib/QtLib/../QtConfig/ -lQtConfig -L/home/dedy/QtProjects/QtLib/QtLib/../QtDB/ -lQtDB -lasound -L/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/lib -lQt5PrintSupport -L/usr/lib64 -lQt5Widgets -lQt5Multimedia -lQt5Gui -lQt5Sql -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -78,7 +78,10 @@ SOURCES       = qtlib.cpp \
 		CallerSound/dcallersounddialog.cpp \
 		CallerSoundAlsa/dcallersoundworker.cpp \
 		CallerSoundAlsa/dcallersoundalsa.cpp \
-		CallerSoundAlsa/wavfile.cpp qrc_resources.cpp \
+		CallerSoundAlsa/wavfile.cpp \
+		StackedWidget/dstackedwidget.cpp \
+		Label/dlabelpic.cpp \
+		ScrollingText/drunningtext.cpp qrc_resources.cpp \
 		moc_dialogthread.cpp \
 		moc_worker.cpp \
 		moc_dialogtesting.cpp \
@@ -101,7 +104,9 @@ SOURCES       = qtlib.cpp \
 		moc_scrolltext.cpp \
 		moc_dcallersounddialog.cpp \
 		moc_dcallersoundworker.cpp \
-		moc_dcallersoundalsa.cpp
+		moc_dcallersoundalsa.cpp \
+		moc_dstackedwidget.cpp \
+		moc_drunningtext.cpp
 OBJECTS       = qtlib.o \
 		dialogthread.o \
 		worker.o \
@@ -133,6 +138,9 @@ OBJECTS       = qtlib.o \
 		dcallersoundworker.o \
 		dcallersoundalsa.o \
 		wavfile.o \
+		dstackedwidget.o \
+		dlabelpic.o \
+		drunningtext.o \
 		qrc_resources.o \
 		moc_dialogthread.o \
 		moc_worker.o \
@@ -156,7 +164,9 @@ OBJECTS       = qtlib.o \
 		moc_scrolltext.o \
 		moc_dcallersounddialog.o \
 		moc_dcallersoundworker.o \
-		moc_dcallersoundalsa.o
+		moc_dcallersoundalsa.o \
+		moc_dstackedwidget.o \
+		moc_drunningtext.o
 DIST          = Stylesheet/dark-theme.qss \
 		Stylesheet/QQueue.qss \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
@@ -331,7 +341,6 @@ DIST          = Stylesheet/dark-theme.qss \
 		App/application.h \
 		Clock/dclock.h \
 		Dialog/ddialog.h \
-		Inc/App \
 		Inc/CallerSound \
 		Inc/DebugStream \
 		Inc/Clock \
@@ -344,12 +353,13 @@ DIST          = Stylesheet/dark-theme.qss \
 		Inc/Media \
 		Inc/Object \
 		Inc/Print \
-		Testing/mainwindowtesting.h \
 		Inc/Testing \
+		Inc/Application \
+		Inc/Config \
+		Testing/mainwindowtesting.h \
 		Logger/dlogger.h \
 		ScrollingText/scrollingtext.h \
 		Logger/q_debugstream.h \
-		Inc/Config \
 		Widget/dwidget.h \
 		Inc/Widget \
 		ScrollingText/scrolltext.h \
@@ -357,7 +367,13 @@ DIST          = Stylesheet/dark-theme.qss \
 		CallerSoundAlsa/dcallersoundworker.h \
 		Inc/CallerSoundAlsa \
 		CallerSoundAlsa/dcallersoundalsa.h \
-		CallerSoundAlsa/wavfile.h qtlib.cpp \
+		CallerSoundAlsa/wavfile.h \
+		Inc/Setting \
+		StackedWidget/dstackedwidget.h \
+		Inc/StackedWidget \
+		Label/dlabelpic.h \
+		Inc/ScrollingText \
+		ScrollingText/drunningtext.h qtlib.cpp \
 		Testing/Thread/dialogthread.cpp \
 		Testing/Thread/worker.cpp \
 		Testing/dialogtesting.cpp \
@@ -387,7 +403,10 @@ DIST          = Stylesheet/dark-theme.qss \
 		CallerSound/dcallersounddialog.cpp \
 		CallerSoundAlsa/dcallersoundworker.cpp \
 		CallerSoundAlsa/dcallersoundalsa.cpp \
-		CallerSoundAlsa/wavfile.cpp
+		CallerSoundAlsa/wavfile.cpp \
+		StackedWidget/dstackedwidget.cpp \
+		Label/dlabelpic.cpp \
+		ScrollingText/drunningtext.cpp
 QMAKE_TARGET  = QtLib
 DESTDIR       = 
 TARGET        = libQtLib.so.1.0.0
@@ -401,7 +420,7 @@ TARGET2       = libQtLib.so.1.0
 first: all
 ####### Build rules
 
-$(TARGET): ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h $(OBJECTS) $(SUBLIBS) $(OBJCOMP)  
+$(TARGET): ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h ui_dstackedwidget.h $(OBJECTS) $(SUBLIBS) $(OBJCOMP)  
 	-$(DEL_FILE) $(TARGET) $(TARGET0) $(TARGET1) $(TARGET2)
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS) $(OBJCOMP)
 	-ln -s $(TARGET) $(TARGET0)
@@ -412,7 +431,7 @@ $(TARGET): ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwi
 
 staticlib: $(TARGETA)
 
-$(TARGETA): ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h $(OBJECTS) $(OBJCOMP) 
+$(TARGETA): ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h ui_dstackedwidget.h $(OBJECTS) $(OBJCOMP) 
 	-$(DEL_FILE) $(TARGETA) 
 	$(AR) $(TARGETA) $(OBJECTS)
 
@@ -748,9 +767,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents Resources/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents qtlib.h qtlib_global.h Testing/Thread/dialogthread.h Testing/Thread/worker.h Testing/dialogtesting.h Testing/dialogtest_sound.h Testing/Sound/mysound.h MainWindow/dmainwindow.h Testing/Sound/sound.h qtlibmainwindow.h Testing/QThreadPool/mythread.h CallerSound/callersound.h Object/dobject.h Testing/Painter/mywidget.h Testing/Painter/dialogpainter.h PushButton/dpushbutton.h StatusBar/dstatusbar.h Print/dprint.h Label/dlabel.h Media/dmedia.h App/application.h Clock/dclock.h Dialog/ddialog.h Inc/App Inc/CallerSound Inc/DebugStream Inc/Clock Inc/Dialog Inc/Label Inc/Logger Inc/PushButton Inc/StatusBar Inc/MainWindow Inc/Media Inc/Object Inc/Print Testing/mainwindowtesting.h Inc/Testing Logger/dlogger.h ScrollingText/scrollingtext.h Logger/q_debugstream.h Inc/Config Widget/dwidget.h Inc/Widget ScrollingText/scrolltext.h CallerSound/dcallersounddialog.h CallerSoundAlsa/dcallersoundworker.h Inc/CallerSoundAlsa CallerSoundAlsa/dcallersoundalsa.h CallerSoundAlsa/wavfile.h $(DISTDIR)/
-	$(COPY_FILE) --parents qtlib.cpp Testing/Thread/dialogthread.cpp Testing/Thread/worker.cpp Testing/dialogtesting.cpp Testing/dialogtest_sound.cpp Testing/Sound/mysound.cpp MainWindow/dmainwindow.cpp Testing/Sound/sound.cpp qtlibmainwindow.cpp Testing/QThreadPool/mythread.cpp CallerSound/callersound.cpp Object/dobject.cpp Testing/Painter/mywidget.cpp Testing/Painter/dialogpainter.cpp PushButton/dpushbutton.cpp StatusBar/dstatusbar.cpp Print/dprint.cpp Label/dlabel.cpp Media/dmedia.cpp App/application.cpp Clock/dclock.cpp Dialog/ddialog.cpp Testing/mainwindowtesting.cpp Logger/dlogger.cpp ScrollingText/scrollingtext.cpp Widget/dwidget.cpp ScrollingText/scrolltext.cpp CallerSound/dcallersounddialog.cpp CallerSoundAlsa/dcallersoundworker.cpp CallerSoundAlsa/dcallersoundalsa.cpp CallerSoundAlsa/wavfile.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents Testing/Thread/dialogthread.ui Testing/dialogtesting.ui Testing/dialogtest_sound.ui MainWindow/dmainwindow.ui qtlibmainwindow.ui Testing/Painter/dialogpainter.ui Print/dprint.ui Media/dmedia.ui Dialog/ddialog.ui Testing/mainwindowtesting.ui Logger/dlogger.ui CallerSound/dcallersounddialog.ui $(DISTDIR)/
+	$(COPY_FILE) --parents qtlib.h qtlib_global.h Testing/Thread/dialogthread.h Testing/Thread/worker.h Testing/dialogtesting.h Testing/dialogtest_sound.h Testing/Sound/mysound.h MainWindow/dmainwindow.h Testing/Sound/sound.h qtlibmainwindow.h Testing/QThreadPool/mythread.h CallerSound/callersound.h Object/dobject.h Testing/Painter/mywidget.h Testing/Painter/dialogpainter.h PushButton/dpushbutton.h StatusBar/dstatusbar.h Print/dprint.h Label/dlabel.h Media/dmedia.h App/application.h Clock/dclock.h Dialog/ddialog.h Inc/CallerSound Inc/DebugStream Inc/Clock Inc/Dialog Inc/Label Inc/Logger Inc/PushButton Inc/StatusBar Inc/MainWindow Inc/Media Inc/Object Inc/Print Inc/Testing Inc/Application Inc/Config Testing/mainwindowtesting.h Logger/dlogger.h ScrollingText/scrollingtext.h Logger/q_debugstream.h Widget/dwidget.h Inc/Widget ScrollingText/scrolltext.h CallerSound/dcallersounddialog.h CallerSoundAlsa/dcallersoundworker.h Inc/CallerSoundAlsa CallerSoundAlsa/dcallersoundalsa.h CallerSoundAlsa/wavfile.h Inc/Setting StackedWidget/dstackedwidget.h Inc/StackedWidget Label/dlabelpic.h Inc/ScrollingText ScrollingText/drunningtext.h $(DISTDIR)/
+	$(COPY_FILE) --parents qtlib.cpp Testing/Thread/dialogthread.cpp Testing/Thread/worker.cpp Testing/dialogtesting.cpp Testing/dialogtest_sound.cpp Testing/Sound/mysound.cpp MainWindow/dmainwindow.cpp Testing/Sound/sound.cpp qtlibmainwindow.cpp Testing/QThreadPool/mythread.cpp CallerSound/callersound.cpp Object/dobject.cpp Testing/Painter/mywidget.cpp Testing/Painter/dialogpainter.cpp PushButton/dpushbutton.cpp StatusBar/dstatusbar.cpp Print/dprint.cpp Label/dlabel.cpp Media/dmedia.cpp App/application.cpp Clock/dclock.cpp Dialog/ddialog.cpp Testing/mainwindowtesting.cpp Logger/dlogger.cpp ScrollingText/scrollingtext.cpp Widget/dwidget.cpp ScrollingText/scrolltext.cpp CallerSound/dcallersounddialog.cpp CallerSoundAlsa/dcallersoundworker.cpp CallerSoundAlsa/dcallersoundalsa.cpp CallerSoundAlsa/wavfile.cpp StackedWidget/dstackedwidget.cpp Label/dlabelpic.cpp ScrollingText/drunningtext.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents Testing/Thread/dialogthread.ui Testing/dialogtesting.ui Testing/dialogtest_sound.ui MainWindow/dmainwindow.ui qtlibmainwindow.ui Testing/Painter/dialogpainter.ui Print/dprint.ui Media/dmedia.ui Dialog/ddialog.ui Testing/mainwindowtesting.ui Logger/dlogger.ui CallerSound/dcallersounddialog.ui StackedWidget/dstackedwidget.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -779,6 +798,13 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: Resources/resources.qrc \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/rcc \
+		Resources/Background/High-Quality-Birds-Wallpapers_b.jpg \
+		Resources/Background/du1.jpg \
+		Resources/Background/Barelang-Bridge.jpg \
+		Resources/Background/c-plus-plus-programing-wallpaper.jpg \
+		Resources/Background/ykDIJIL.jpg \
+		Resources/Background/programmingoop_wallpaper_black_by_hexeno.png \
+		Resources/Background/2169_body_1_2.jpg \
 		Resources/png_32/script_delete.png \
 		Resources/png_32/search_minus.png \
 		Resources/png_32/style_add.png \
@@ -816,9 +842,9 @@ qrc_resources.cpp: Resources/resources.qrc \
 		Resources/png_48/gnome-photo-printer.png
 	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/rcc -name resources Resources/resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_dialogthread.cpp moc_worker.cpp moc_dialogtesting.cpp moc_dialogtest_sound.cpp moc_mysound.cpp moc_dmainwindow.cpp moc_qtlibmainwindow.cpp moc_callersound.cpp moc_mywidget.cpp moc_dialogpainter.cpp moc_dprint.cpp moc_dlabel.cpp moc_dmedia.cpp moc_dclock.cpp moc_ddialog.cpp moc_mainwindowtesting.cpp moc_dlogger.cpp moc_scrollingtext.cpp moc_dwidget.cpp moc_scrolltext.cpp moc_dcallersounddialog.cpp moc_dcallersoundworker.cpp moc_dcallersoundalsa.cpp
+compiler_moc_header_make_all: moc_dialogthread.cpp moc_worker.cpp moc_dialogtesting.cpp moc_dialogtest_sound.cpp moc_mysound.cpp moc_dmainwindow.cpp moc_qtlibmainwindow.cpp moc_callersound.cpp moc_mywidget.cpp moc_dialogpainter.cpp moc_dprint.cpp moc_dlabel.cpp moc_dmedia.cpp moc_dclock.cpp moc_ddialog.cpp moc_mainwindowtesting.cpp moc_dlogger.cpp moc_scrollingtext.cpp moc_dwidget.cpp moc_scrolltext.cpp moc_dcallersounddialog.cpp moc_dcallersoundworker.cpp moc_dcallersoundalsa.cpp moc_dstackedwidget.cpp moc_drunningtext.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_dialogthread.cpp moc_worker.cpp moc_dialogtesting.cpp moc_dialogtest_sound.cpp moc_mysound.cpp moc_dmainwindow.cpp moc_qtlibmainwindow.cpp moc_callersound.cpp moc_mywidget.cpp moc_dialogpainter.cpp moc_dprint.cpp moc_dlabel.cpp moc_dmedia.cpp moc_dclock.cpp moc_ddialog.cpp moc_mainwindowtesting.cpp moc_dlogger.cpp moc_scrollingtext.cpp moc_dwidget.cpp moc_scrolltext.cpp moc_dcallersounddialog.cpp moc_dcallersoundworker.cpp moc_dcallersoundalsa.cpp
+	-$(DEL_FILE) moc_dialogthread.cpp moc_worker.cpp moc_dialogtesting.cpp moc_dialogtest_sound.cpp moc_mysound.cpp moc_dmainwindow.cpp moc_qtlibmainwindow.cpp moc_callersound.cpp moc_mywidget.cpp moc_dialogpainter.cpp moc_dprint.cpp moc_dlabel.cpp moc_dmedia.cpp moc_dclock.cpp moc_ddialog.cpp moc_mainwindowtesting.cpp moc_dlogger.cpp moc_scrollingtext.cpp moc_dwidget.cpp moc_scrolltext.cpp moc_dcallersounddialog.cpp moc_dcallersoundworker.cpp moc_dcallersoundalsa.cpp moc_dstackedwidget.cpp moc_drunningtext.cpp
 moc_dialogthread.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
@@ -926,7 +952,7 @@ moc_dialogthread.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
 		Testing/Thread/dialogthread.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Thread/dialogthread.h -o moc_dialogthread.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Thread/dialogthread.h -o moc_dialogthread.cpp
 
 moc_worker.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -981,7 +1007,7 @@ moc_worker.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qthread.h \
 		Testing/Thread/worker.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Thread/worker.h -o moc_worker.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Thread/worker.h -o moc_worker.cpp
 
 moc_dialogtesting.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -1083,7 +1109,7 @@ moc_dialogtesting.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		Testing/dialogtesting.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/dialogtesting.h -o moc_dialogtesting.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/dialogtesting.h -o moc_dialogtesting.cpp
 
 moc_dialogtest_sound.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -1191,7 +1217,7 @@ moc_dialogtest_sound.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasictimer.h \
 		Testing/dialogtest_sound.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/dialogtest_sound.h -o moc_dialogtest_sound.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/dialogtest_sound.h -o moc_dialogtest_sound.cpp
 
 moc_mysound.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -1247,7 +1273,7 @@ moc_mysound.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasictimer.h \
 		Testing/Sound/mysound.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Sound/mysound.h -o moc_mysound.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Sound/mysound.h -o moc_mysound.cpp
 
 moc_dmainwindow.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -1380,7 +1406,7 @@ moc_dmainwindow.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/Q
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
 		MainWindow/dmainwindow.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include MainWindow/dmainwindow.h -o moc_dmainwindow.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include MainWindow/dmainwindow.h -o moc_dmainwindow.cpp
 
 moc_qtlibmainwindow.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QMainWindow \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -1497,7 +1523,7 @@ moc_qtlibmainwindow.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/inclu
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
 		qtlibmainwindow.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include qtlibmainwindow.h -o moc_qtlibmainwindow.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include qtlibmainwindow.h -o moc_qtlibmainwindow.cpp
 
 moc_callersound.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -1631,7 +1657,7 @@ moc_callersound.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
 		CallerSound/callersound.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSound/callersound.h -o moc_callersound.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSound/callersound.h -o moc_callersound.cpp
 
 moc_mywidget.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -1738,7 +1764,7 @@ moc_mywidget.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
 		Testing/Painter/mywidget.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Painter/mywidget.h -o moc_mywidget.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Painter/mywidget.h -o moc_mywidget.cpp
 
 moc_dialogpainter.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -1841,7 +1867,7 @@ moc_dialogpainter.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		Testing/Painter/dialogpainter.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Painter/dialogpainter.h -o moc_dialogpainter.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/Painter/dialogpainter.h -o moc_dialogpainter.cpp
 
 moc_dprint.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -1987,7 +2013,7 @@ moc_dprint.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextcursor.h \
 		Print/dprint.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Print/dprint.h -o moc_dprint.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Print/dprint.h -o moc_dprint.cpp
 
 moc_dlabel.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -2118,7 +2144,7 @@ moc_dlabel.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		Label/dlabel.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Label/dlabel.h -o moc_dlabel.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Label/dlabel.h -o moc_dlabel.cpp
 
 moc_dmedia.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -2254,7 +2280,7 @@ moc_dmedia.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		Media/dmedia.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Media/dmedia.h -o moc_dmedia.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Media/dmedia.h -o moc_dmedia.cpp
 
 moc_dclock.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -2389,7 +2415,7 @@ moc_dclock.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasictimer.h \
 		Clock/dclock.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Clock/dclock.h -o moc_dclock.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Clock/dclock.h -o moc_dclock.cpp
 
 moc_ddialog.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -2520,7 +2546,7 @@ moc_ddialog.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
 		Dialog/ddialog.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Dialog/ddialog.h -o moc_ddialog.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Dialog/ddialog.h -o moc_ddialog.cpp
 
 moc_mainwindowtesting.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -2625,7 +2651,7 @@ moc_mainwindowtesting.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qicon.h \
 		Testing/mainwindowtesting.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/mainwindowtesting.h -o moc_mainwindowtesting.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Testing/mainwindowtesting.h -o moc_mainwindowtesting.cpp
 
 moc_dlogger.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
@@ -2756,7 +2782,7 @@ moc_dlogger.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWid
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
 		Logger/dlogger.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Logger/dlogger.h -o moc_dlogger.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Logger/dlogger.h -o moc_dlogger.cpp
 
 moc_scrollingtext.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
@@ -2907,7 +2933,7 @@ moc_scrollingtext.cpp: qtlib_global.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql/qsqlerror.h \
 		ScrollingText/scrollingtext.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ScrollingText/scrollingtext.h -o moc_scrollingtext.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ScrollingText/scrollingtext.h -o moc_scrollingtext.cpp
 
 moc_dwidget.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
@@ -3033,9 +3059,14 @@ moc_dwidget.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCor
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPicture \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpicture.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		Inc/Setting \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
 		Widget/dwidget.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Widget/dwidget.h -o moc_dwidget.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include Widget/dwidget.h -o moc_dwidget.cpp
 
 moc_scrolltext.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QWidget \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
@@ -3142,7 +3173,7 @@ moc_scrolltext.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/Qt
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasictimer.h \
 		ScrollingText/scrolltext.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ScrollingText/scrolltext.h -o moc_scrolltext.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ScrollingText/scrolltext.h -o moc_scrolltext.cpp
 
 moc_dcallersounddialog.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QDialog \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdialog.h \
@@ -3274,7 +3305,7 @@ moc_dcallersounddialog.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/in
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
 		CallerSound/dcallersounddialog.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSound/dcallersounddialog.h -o moc_dcallersounddialog.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSound/dcallersounddialog.h -o moc_dcallersounddialog.cpp
 
 moc_dcallersoundworker.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
@@ -3396,7 +3427,7 @@ moc_dcallersoundworker.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/in
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
 		CallerSoundAlsa/dcallersoundworker.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSoundAlsa/dcallersoundworker.h -o moc_dcallersoundworker.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSoundAlsa/dcallersoundworker.h -o moc_dcallersoundworker.cpp
 
 moc_dcallersoundalsa.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
@@ -3521,13 +3552,272 @@ moc_dcallersoundalsa.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/incl
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocess.h \
 		CallerSoundAlsa/dcallersoundalsa.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
-	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSoundAlsa/dcallersoundalsa.h -o moc_dcallersoundalsa.cpp
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include CallerSoundAlsa/dcallersoundalsa.h -o moc_dcallersoundalsa.cpp
+
+moc_dstackedwidget.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QStackedWidget \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstackedwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		Inc/Setting \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../QtConfig/def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		StackedWidget/dstackedwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include StackedWidget/dstackedwidget.h -o moc_dstackedwidget.cpp
+
+moc_drunningtext.cpp: /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		Inc/Label \
+		Label/dlabel.h \
+		qtlib_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QShowEvent \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPaintEvent \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPainter \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainter.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../QtConfig/def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		Label/dlabelpic.h \
+		Inc/Setting \
+		ScrollingText/drunningtext.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/moc $(DEFINES) -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++ -I/home/dedy/QtProjects/QtLib/QtLib -I/home/dedy/QtProjects/QtLib/QtConfig -I/home/dedy/QtProjects/QtLib/QtDB -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtPrintSupport -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtMultimedia -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtSql -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtNetwork -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ScrollingText/drunningtext.h -o moc_drunningtext.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h
+compiler_uic_make_all: ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h ui_dstackedwidget.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h
+	-$(DEL_FILE) ui_dialogthread.h ui_dialogtesting.h ui_dialogtest_sound.h ui_dmainwindow.h ui_qtlibmainwindow.h ui_dialogpainter.h ui_dprint.h ui_dmedia.h ui_ddialog.h ui_mainwindowtesting.h ui_dlogger.h ui_dcallersounddialog.h ui_dstackedwidget.h
 ui_dialogthread.h: Testing/Thread/dialogthread.ui \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/uic
 	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/uic Testing/Thread/dialogthread.ui -o ui_dialogthread.h
@@ -3679,6 +3969,10 @@ ui_dlogger.h: Logger/dlogger.ui \
 ui_dcallersounddialog.h: CallerSound/dcallersounddialog.ui \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/uic
 	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/uic CallerSound/dcallersounddialog.ui -o ui_dcallersounddialog.h
+
+ui_dstackedwidget.h: StackedWidget/dstackedwidget.ui \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/uic
+	/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/uic StackedWidget/dstackedwidget.ui -o ui_dstackedwidget.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -5413,7 +5707,28 @@ dstatusbar.o: StatusBar/dstatusbar.cpp StatusBar/dstatusbar.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
-		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		Inc/Setting \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../QtConfig/def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dstatusbar.o StatusBar/dstatusbar.cpp
 
 dprint.o: Print/dprint.cpp Print/dprint.h \
@@ -6898,7 +7213,12 @@ dwidget.o: Widget/dwidget.cpp Widget/dwidget.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPixmap \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPicture \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpicture.h \
-		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		Inc/Setting \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dwidget.o Widget/dwidget.cpp
 
 scrolltext.o: ScrollingText/scrolltext.cpp ScrollingText/scrolltext.h \
@@ -7448,6 +7768,387 @@ wavfile.o: CallerSoundAlsa/wavfile.cpp CallerSoundAlsa/wavfile.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o wavfile.o CallerSoundAlsa/wavfile.cpp
 
+dstackedwidget.o: StackedWidget/dstackedwidget.cpp StackedWidget/dstackedwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QStackedWidget \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qstackedwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		Inc/Setting \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../QtConfig/def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dstackedwidget.o StackedWidget/dstackedwidget.cpp
+
+dlabelpic.o: Label/dlabelpic.cpp Label/dlabelpic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		Inc/Setting \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../QtConfig/def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dlabelpic.o Label/dlabelpic.cpp
+
+drunningtext.o: ScrollingText/drunningtext.cpp ScrollingText/drunningtext.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		Inc/Label \
+		Label/dlabel.h \
+		qtlib_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QLabel \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QShowEvent \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPaintEvent \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/QPainter \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainter.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpen.h \
+		../QtConfig/dsettings.h \
+		../QtConfig/qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		../QtConfig/def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		Label/dlabelpic.h \
+		Inc/Setting
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drunningtext.o ScrollingText/drunningtext.cpp
+
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
@@ -7519,6 +8220,12 @@ moc_dcallersoundworker.o: moc_dcallersoundworker.cpp
 
 moc_dcallersoundalsa.o: moc_dcallersoundalsa.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dcallersoundalsa.o moc_dcallersoundalsa.cpp
+
+moc_dstackedwidget.o: moc_dstackedwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dstackedwidget.o moc_dstackedwidget.cpp
+
+moc_drunningtext.o: moc_drunningtext.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_drunningtext.o moc_drunningtext.cpp
 
 ####### Install
 

@@ -28,5 +28,4 @@ unix {
     INSTALLS += target
 }
 
-DISTFILES += \
-    Config
+DISTFILES +=

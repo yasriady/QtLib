@@ -45,7 +45,10 @@ SOURCES += qtlib.cpp \
     CallerSound/dcallersounddialog.cpp \
     CallerSoundAlsa/dcallersoundworker.cpp \
     CallerSoundAlsa/dcallersoundalsa.cpp \
-    CallerSoundAlsa/wavfile.cpp
+    CallerSoundAlsa/wavfile.cpp \
+    StackedWidget/dstackedwidget.cpp \
+    Label/dlabelpic.cpp \
+    ScrollingText/drunningtext.cpp
 
 HEADERS += qtlib.h\
         qtlib_global.h \
@@ -70,7 +73,6 @@ HEADERS += qtlib.h\
     App/application.h \
     Clock/dclock.h \
     Dialog/ddialog.h \
-    Inc/App \
     Inc/CallerSound \
     Inc/DebugStream \
     Inc/Clock \
@@ -83,12 +85,13 @@ HEADERS += qtlib.h\
     Inc/Media \
     Inc/Object \
     Inc/Print \
-    Testing/mainwindowtesting.h \
     Inc/Testing \
+    Inc/Application \
+    Inc/Config \
+    Testing/mainwindowtesting.h \
     Logger/dlogger.h \
     ScrollingText/scrollingtext.h \
     Logger/q_debugstream.h \
-    Inc/Config \
     Widget/dwidget.h \
     Inc/Widget \
     ScrollingText/scrolltext.h \
@@ -96,7 +99,13 @@ HEADERS += qtlib.h\
     CallerSoundAlsa/dcallersoundworker.h \
     Inc/CallerSoundAlsa \
     CallerSoundAlsa/dcallersoundalsa.h \
-    CallerSoundAlsa/wavfile.h
+    CallerSoundAlsa/wavfile.h \
+    Inc/Setting \
+    StackedWidget/dstackedwidget.h \
+    Inc/StackedWidget \
+    Label/dlabelpic.h \
+    Inc/ScrollingText \
+    ScrollingText/drunningtext.h
 
 unix {
     target.path = /usr/lib
@@ -118,7 +127,8 @@ FORMS += \
     Dialog/ddialog.ui \
     Testing/mainwindowtesting.ui \
     Logger/dlogger.ui \
-    CallerSound/dcallersounddialog.ui
+    CallerSound/dcallersounddialog.ui \
+    StackedWidget/dstackedwidget.ui
 
 DISTFILES += \
     Stylesheet/dark-theme.qss \
