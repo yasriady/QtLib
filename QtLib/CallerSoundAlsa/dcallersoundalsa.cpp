@@ -16,7 +16,7 @@ void DCallerSoundAlsa::call(const QStringList &fileList)
     DCallerSoundWorker *worker = new DCallerSoundWorker();
 
     worker->setFileList(fileList);
-
+ 
     worker->moveToThread(thread);
     connect( worker, SIGNAL(finished()), this, SLOT(finished()) );                  // Ddy
     connect( worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)) );
