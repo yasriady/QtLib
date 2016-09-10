@@ -35,14 +35,21 @@
         <file>png_32/shape_square_delete.png</file>
         <file>png_32/style_add.png</file>
         <file>png_32/style_delete.png</file>
-    </qresource>
-    <qresource prefix="/backgnd">
-        <file>Background/c-plus-plus-programing-wallpaper.jpg</file>
-        <file>Background/du1.jpg</file>
-        <file>Background/High-Quality-Birds-Wallpapers_b.jpg</file>
-        <file>Background/programmingoop_wallpaper_black_by_hexeno.png</file>
-        <file>Background/ykDIJIL.jpg</file>
-        <file>Background/2169_body_1_2.jpg</file>
-        <file>Background/Barelang-Bridge.jpg</file>
+        <file>png_64/chardevice.png</file>
+        <file>png_64/computer-2.png</file>
+        <file>png_64/computer-3.png</file>
+        <file>png_64/computer-4.png</file>
+        <file>png_64/computer-6.png</file>
+        <file>png_64/computer-7.png</file>
+        <file>png_64/computer-laptop-2.png</file>
+        <file>png_64/computer-laptop.png</file>
+        <file>png_64/games-config-background.png</file>
+        <file>png_64/project-open-3.png</file>
+        <file>png_64/radio-old.png</file>
+        <file>png_64/video-display-2.png</file>
+        <file>png_64/video-display-3.png</file>
+        <file>png_64/video-display.png</file>
+        <file>png_64/video-television-2.png</file>
+        <file>png_64/view-list-icon-4.png</file>
     </qresource>
 </RCC>

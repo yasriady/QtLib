@@ -14,8 +14,8 @@ void DLabelPic::setPixmapFile(const QString &filename)
 
 void DLabelPic::showEvent(QShowEvent *event)
 {
-    mkCONFIX;
-    m_pixmapFile = confx->string( KEY("pixmapFile"), "" );
+    //mkCONFIX;
+    m_pixmapFile = m_confix->string( KEY1("pixmapFile"), "" );
     if( m_pixmapFile != "" )
     {
         m_pixmapFile = PICTUREDIR + SEP + m_pixmapFile;

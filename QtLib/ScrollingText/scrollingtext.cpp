@@ -60,15 +60,15 @@ void ScrollingText::timerEvent(QTimerEvent *event)
 
 void ScrollingText::showEvent(QShowEvent *event)
 {
-    mkCONFIG; mkCONFIX;
+    //mkCONFIG; mkCONFIX;
 
-    m_started = confx->boolean( KEY( objectName() + "_started" ), true );
-    m_show = confx->boolean( KEY( objectName() + "_show" ), true );
+    m_started = m_confix->boolean( KEY1( objectName() + "_started" ), true );
+    m_show = m_confix->boolean( KEY1( objectName() + "_show" ), true );
 
     pos_ = 0;
-    m_text = confg->string( KEY( objectName() + "_text" ), "RunningText .................." );
-    const int &padQty = confx->integr( KEY( objectName() + "_padQty"), 25);
-    m_timeout = confx->integr( KEY( objectName() + "_timer"), 350);
+    m_text = m_config->string( KEY1( objectName() + "_text" ), "RunningText .................." );
+    const int &padQty = m_confix->integr( KEY1( objectName() + "_padQty"), 25);
+    m_timeout = m_confix->integr( KEY1( objectName() + "_timer"), 350);
     //setText(m_text);
     QString pad(padQty, ' ');
     m_pad = pad;

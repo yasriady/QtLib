@@ -60,9 +60,5 @@
 // Defined for Taxonomy
 #define RUNNINGTEXT             "RUNNINGTEXT"
 
-// window setting
-#define GEOMETRY                APPNAME + "_" + CLASSNAME + "_" + property("windowName").toString() + "_geometry"
-#define STATE                   APPNAME + "_" + CLASSNAME + "_" + property("windowName").toString() + "_state"
-
 
 #endif // DEF_H

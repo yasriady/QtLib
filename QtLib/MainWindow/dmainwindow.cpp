@@ -2,40 +2,41 @@
 #include "ui_dmainwindow.h"
 
 DMainWindow::DMainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::DMainWindow)
+    QMainWindow(parent)//,
+    //ui(new Ui::DMainWindow)
 {
-    ui->setupUi(this);
+    //ui->setupUi(this);
+    QTimer::singleShot( 50, this, SLOT(windowLoaded()));   // to generate warning if customInit() was not loaded
+
 }
 
 DMainWindow::~DMainWindow()
 {
-    delete ui;
+    //delete ui;
 }
 
-void DMainWindow::setStyleSheet(QString styleSheet)
-{
-    const QString &qssFile = EXTRADIR + "qss" + SEP + APPNAME + "_" + m_windowName + ".qss";
-    if( styleSheet=="" )
-        styleSheet = textFromFile(qssFile);
-    QMainWindow::setStyleSheet( styleSheet );
-}
+//void DMainWindow::resizeEvent(QResizeEvent *event)
+//{
+//    QMainWindow::resizeEvent(event);
+//}
 
 void DMainWindow::closeEvent(QCloseEvent *event)
 {
-    mkCONFIX;
-    confx->setValue( GEOMETRY, saveGeometry());
-    confx->setValue( STATE, saveState());
+    //mkCONFIX;
+    m_confix->setValue( KEY3(this, "geometry"), saveGeometry());
+    m_confix->setValue( KEY3(this, "state"), saveState());
     QMainWindow::closeEvent(event);
 }
 
-void DMainWindow::showEvent(QShowEvent *event)
+void DMainWindow::windowLoaded()
 {
-    customInit();
-    setStyleSheet();
-    mkCONFIX;
-    const QByteArray &geometry = confx->value(GEOMETRY).toByteArray();
-    restoreGeometry(geometry);
-    updateGeometry();
-    QMainWindow::showEvent(event);
+    //__PF(objectName());
+    bool promotedWidget = ( metaObject()->className()!=objectName() );  // check if this is promoted widget or not
+    if( promotedWidget )
+    {
+        customInit(this, objectName(), windowTitle(), true);
+    } else {
+        if( !m_customInit ) showWarning( objectName() /*FN*/, WARNINGCUSTOMINIT);
+    }
 }
+

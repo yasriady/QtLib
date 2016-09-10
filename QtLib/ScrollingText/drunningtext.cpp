@@ -36,11 +36,10 @@ void DRunningText::showEvent(QShowEvent *event)
 {
     DLabel::showEvent(event);
 
-    mkCONFIX;
-    m_started = confx->boolean( KEY("started"), true );
-    m_show = confx->boolean( KEY("show"), true );
-    m_padQty = confx->integr( KEY("padQty"), 35 );
-    m_timerInterval = confx->integr( KEY("timer"), 150 );
+    m_started = m_confix->boolean( KEY1("started"), true );
+    m_show = m_confix->boolean( KEY1("visible"), true );
+    m_padQty = m_confix->integr( KEY1("padQty"), 35 );
+    m_timerInterval = m_confix->integr( KEY1("timer"), 150 );
     m_pad = QString(m_padQty, ' ');
     if( !m_show )
         hide();

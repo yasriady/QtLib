@@ -10,6 +10,7 @@ Application::Application(int &argc, char **argv, int)
         dir->mkdir(EXTRADIR);
         dir->mkdir(qssDIR);
         dir->mkdir(AUDIODIR);
+        dir->mkdir(PICTUREDIR);
     }
 
 //    mkCONFIX;

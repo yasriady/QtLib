@@ -27,54 +27,45 @@ QT_BEGIN_NAMESPACE
 class Ui_DLogger
 {
 public:
-    QVBoxLayout *verticalLayout;
-    QTextEdit *textEdit;
-    QFrame *frame_2;
     QHBoxLayout *horizontalLayout;
+    QFrame *frame_2;
+    QVBoxLayout *verticalLayout;
     QToolButton *clear;
     QToolButton *about;
+    QToolButton *hide;
     QToolButton *increase_font;
     QToolButton *decrease_font;
-    QSpacerItem *horizontalSpacer;
-    QFrame *frame;
-    QVBoxLayout *verticalLayout_2;
+    QSpacerItem *verticalSpacer;
+    QTextEdit *textEdit;
 
     void setupUi(QWidget *DLogger)
     {
         if (DLogger->objectName().isEmpty())
             DLogger->setObjectName(QStringLiteral("DLogger"));
-        DLogger->resize(509, 434);
-        verticalLayout = new QVBoxLayout(DLogger);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        textEdit = new QTextEdit(DLogger);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy);
-        textEdit->setStyleSheet(QStringLiteral("font: 7pt \"Sans Serif\";"));
-
-        verticalLayout->addWidget(textEdit);
-
+        DLogger->resize(549, 148);
+        horizontalLayout = new QHBoxLayout(DLogger);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, -1, 0, -1);
         frame_2 = new QFrame(DLogger);
         frame_2->setObjectName(QStringLiteral("frame_2"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
-        frame_2->setSizePolicy(sizePolicy1);
-        frame_2->setFrameShape(QFrame::StyledPanel);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
+        frame_2->setSizePolicy(sizePolicy);
+        frame_2->setFrameShape(QFrame::NoFrame);
         frame_2->setFrameShadow(QFrame::Raised);
-        horizontalLayout = new QHBoxLayout(frame_2);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        verticalLayout = new QVBoxLayout(frame_2);
+        verticalLayout->setSpacing(3);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
         clear = new QToolButton(frame_2);
         clear->setObjectName(QStringLiteral("clear"));
         QIcon icon;
         icon.addFile(QStringLiteral(":/icon/png_64/edit-clear-3.png"), QSize(), QIcon::Normal, QIcon::Off);
         clear->setIcon(icon);
 
-        horizontalLayout->addWidget(clear);
+        verticalLayout->addWidget(clear);
 
         about = new QToolButton(frame_2);
         about->setObjectName(QStringLiteral("about"));
@@ -82,42 +73,44 @@ public:
         icon1.addFile(QStringLiteral(":/icon/png_64/help-about-3.png"), QSize(), QIcon::Normal, QIcon::Off);
         about->setIcon(icon1);
 
-        horizontalLayout->addWidget(about);
+        verticalLayout->addWidget(about);
+
+        hide = new QToolButton(frame_2);
+        hide->setObjectName(QStringLiteral("hide"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/icon/png_16/process-stop.png"), QSize(), QIcon::Normal, QIcon::Off);
+        hide->setIcon(icon2);
+
+        verticalLayout->addWidget(hide);
 
         increase_font = new QToolButton(frame_2);
         increase_font->setObjectName(QStringLiteral("increase_font"));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/icon/png_32/style_add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        increase_font->setIcon(icon2);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/icon/png_32/style_add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        increase_font->setIcon(icon3);
 
-        horizontalLayout->addWidget(increase_font);
+        verticalLayout->addWidget(increase_font);
 
         decrease_font = new QToolButton(frame_2);
         decrease_font->setObjectName(QStringLiteral("decrease_font"));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/icon/png_32/style_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        decrease_font->setIcon(icon3);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/icon/png_32/style_delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        decrease_font->setIcon(icon4);
 
-        horizontalLayout->addWidget(decrease_font);
+        verticalLayout->addWidget(decrease_font);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        verticalSpacer = new QSpacerItem(20, 45, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        horizontalLayout->addItem(horizontalSpacer);
+        verticalLayout->addItem(verticalSpacer);
 
 
-        verticalLayout->addWidget(frame_2);
+        horizontalLayout->addWidget(frame_2);
 
-        frame = new QFrame(DLogger);
-        frame->setObjectName(QStringLiteral("frame"));
-        sizePolicy1.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
-        frame->setSizePolicy(sizePolicy1);
-        frame->setFrameShape(QFrame::NoFrame);
-        frame->setFrameShadow(QFrame::Raised);
-        verticalLayout_2 = new QVBoxLayout(frame);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(-1, 0, -1, 0);
+        textEdit = new QTextEdit(DLogger);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setStyleSheet(QStringLiteral("font: 7pt \"Sans Serif\";"));
 
-        verticalLayout->addWidget(frame);
+        horizontalLayout->addWidget(textEdit);
 
 
         retranslateUi(DLogger);
@@ -133,6 +126,10 @@ public:
 #endif // QT_NO_TOOLTIP
         clear->setText(QApplication::translate("DLogger", "clear", 0));
         about->setText(QApplication::translate("DLogger", "about", 0));
+#ifndef QT_NO_TOOLTIP
+        hide->setToolTip(QApplication::translate("DLogger", "hide", 0));
+#endif // QT_NO_TOOLTIP
+        hide->setText(QApplication::translate("DLogger", "hide", 0));
         increase_font->setText(QApplication::translate("DLogger", "+", 0));
         decrease_font->setText(QApplication::translate("DLogger", "-", 0));
     } // retranslateUi

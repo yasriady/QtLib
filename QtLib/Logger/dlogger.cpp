@@ -2,7 +2,7 @@
 #include "ui_dlogger.h"
 
 DLogger::DLogger(QWidget *parent) :
-    QWidget(parent),
+    DWidget(parent),
     ui(new Ui::DLogger)
 {
     ui->setupUi(this);
@@ -37,6 +37,14 @@ void DLogger::log(QString str)
 
 }
 
+//void DLogger::showToggle()
+//{
+//    m_shown = !m_shown;
+//    mkCONFIX;
+//    setVisible( m_shown );
+//    confx->setBoolean( VISIBLE, m_shown );
+//}
+
 void DLogger::on_textEdit_textChanged()
 {
     if( (ui->textEdit->toPlainText()).right(1) != "\n" )
@@ -52,3 +60,21 @@ void DLogger::on_about_clicked()
 {
 
 }
+
+void DLogger::on_hide_clicked()
+{
+    DObject::toggleVisibility(this);
+}
+
+//void DLogger::showEvent(QShowEvent *event)
+//{
+//    DWidget::showEvent(event);
+//    QTimer::singleShot(50, this, SLOT(customInit()));
+//}
+
+//void DLogger::customInit()
+//{
+//    mkCONFIX;
+//    m_shown = !confx->boolean( VISIBLE, true );
+//    showToggle();
+//}

@@ -14,7 +14,8 @@
 #include <QPrinter>
 #include <QTextStream>
 #include <QTextDocument>
-#include <dsettings.h>
+//#include <dsettings.h>
+#include "globals.h"
 #include <QPainter>
 #include <QPrintPreviewWidget>
 #include <QAbstractTextDocumentLayout>

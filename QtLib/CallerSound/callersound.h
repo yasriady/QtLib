@@ -15,7 +15,8 @@
 #include <QtDebug>
 #include <QThread>
 #include <Object/dobject.h>
-#include <dsettings.h>
+//#include <dsettings.h>
+#include "globals.h"
 
 class QTLIBSHARED_EXPORT DCallerSound : public QObject, public DObject
 {

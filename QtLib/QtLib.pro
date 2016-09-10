@@ -6,7 +6,7 @@
 
 CONFIG += c++11
 
-QT       += core gui sql widgets multimedia printsupport
+QT       += core gui sql widgets multimedia printsupport network
 
 TARGET = QtLib
 TEMPLATE = lib

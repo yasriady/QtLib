@@ -11,12 +11,17 @@
 
 #include "qtlib_global.h"
 #include <QStatusBar>
-#include <Inc/Setting>
+//#include <Inc/Setting>
+#include "globals.h"
 
 class QTLIBSHARED_EXPORT DStatusBar : public QStatusBar
 {
+
 public:
     explicit DStatusBar(QWidget *parent = Q_NULLPTR);
+
+protected:
+    void showEvent(QShowEvent *event);
 
 };
 

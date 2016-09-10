@@ -4,5 +4,10 @@
 DStatusBar::DStatusBar(QWidget *parent)
     : QStatusBar(parent)
 {
-    SHOWME(__FUNCTION__);
+}
+
+void DStatusBar::showEvent(QShowEvent *event)
+{
+    QStatusBar::showEvent(event);
+    GETBOOL("visible");
 }

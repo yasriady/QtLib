@@ -462,7 +462,6 @@ all: sub-QtConfig-all-ordered sub-QtDB-all-ordered sub-QtLib-all-ordered  FORCE
 clean: sub-QtConfig-clean-ordered sub-QtDB-clean-ordered sub-QtLib-clean-ordered  FORCE
 distclean: sub-QtConfig-distclean-ordered sub-QtDB-distclean-ordered sub-QtLib-distclean-ordered  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) .qmake.stash
 install_subtargets: sub-QtConfig-install_subtargets-ordered sub-QtDB-install_subtargets-ordered sub-QtLib-install_subtargets-ordered FORCE
 uninstall_subtargets: sub-QtConfig-uninstall_subtargets-ordered sub-QtDB-uninstall_subtargets-ordered sub-QtLib-uninstall_subtargets-ordered FORCE
 

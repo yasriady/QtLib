@@ -15,7 +15,8 @@
 #include <QtDebug>
 #include <QWindow>
 #include <QThread>
-#include <dsettings.h>
+//#include <dsettings.h>
+#include "globals.h"
 
 namespace Ui {
 class DMedia;

@@ -16,14 +16,14 @@ DDialog::~DDialog()
 
 void DDialog::closeEvent(QCloseEvent */*event*/)
 {
-    mkCONFIX;
-    confx->setValue( GEOMETRY, saveGeometry());
+    //mkCONFIX;
+    m_confix->setValue( GEOMETRY(this), saveGeometry());
 }
 
 void DDialog::showEvent(QShowEvent */*event*/)
 {
-    mkCONFIX;
-    const QByteArray &geometry = confx->value(GEOMETRY).toByteArray();
+    //mkCONFIX;
+    const QByteArray &geometry = m_confix->value(GEOMETRY(this)).toByteArray();
     restoreGeometry(geometry);
     updateGeometry();
 }

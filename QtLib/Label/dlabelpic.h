@@ -3,7 +3,8 @@
 
 #include <QObject>
 #include <QLabel>
-#include <Inc/Setting>
+//#include <Inc/Setting>
+#include "globals.h"
 
 class DLabelPic : public QLabel
 {

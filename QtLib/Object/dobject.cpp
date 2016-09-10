@@ -2,6 +2,7 @@
 
 DObject::DObject()
 {
+    m_customInit = false;
 }
 
 QStringList DObject::NumericConverter2(const int &n)
@@ -83,12 +84,71 @@ int DObject::mkRandom(const int low, const int high)
     return rand;
 }
 
-QString DObject::textFromFile(const QString &filename)
+QString DObject::textFromFile(const QString &filename, const bool &createNew)
 {
-    QIODevice::OpenModeFlag mode = QFile::exists(filename) ? QFile::ReadOnly : QFile::ReadWrite;
+    QIODevice::OpenModeFlag mode;
+
+    if(createNew)
+        mode = QFile::exists(filename) ? QFile::ReadOnly : QFile::ReadWrite;
+    else
+        mode = QFile::ReadOnly;
+
     QFile File( filename );
     File.open(mode);
     const QString &text = QLatin1String(File.readAll());
     return text;
+}
+
+void DObject::toggleVisibility(QWidget *w)
+{
+    m_visible = !m_visible;
+    w->setVisible(m_visible);
+    //mkCONFIX;
+    m_confix->setBoolean( KEY3(w, "visible"), m_visible );
+}
+
+void DObject::showWarning(const QString &caption, const QString &message)
+{
+    QMessageBox messageBox;
+    messageBox.setWindowTitle(caption);
+    messageBox.setText(message);
+    messageBox.exec();
+}
+
+void DObject::setStyleSheet2(QWidget *w, const bool &createNew, QString styleSheet)
+{
+    QString qssFile = EXTRADIR + "qss" + SEP + APPNAME + "_" + w->objectName();// + ".qss";
+    // if qssFile consist of _01 then trim it
+    if( qssFile.right(2).toInt() > 0 )
+        qssFile = qssFile.left(qssFile.length()-3);
+    qssFile = qssFile + ".qss";
+
+    if( styleSheet=="" )
+        styleSheet = textFromFile(qssFile, createNew);
+    w->setStyleSheet( styleSheet );
+}
+
+void DObject::customInit(QWidget *w, const QString &objectName, const QString &windowTitle, const bool &createNewStylesheet)
+{
+    m_customInit = true;
+
+    // set final customized information into this object.
+    w->setObjectName(objectName);
+    w->setWindowTitle(windowTitle);
+
+    setStyleSheet2(w, createNewStylesheet);
+
+    // restore window state and geometry
+    //mkCONFIX;
+    //const QByteArray &geometry = confx->value(GEOMETRY(w)).toByteArray();
+    const QByteArray &geometry = m_confix->value( KEY3(w, "geometry")  ).toByteArray();
+    w->restoreGeometry(geometry);
+    w->updateGeometry();
+
+    if( w->parent() != NULL ) {
+        m_visible = m_confix->boolean( KEY3(w, "visible"), true );
+        w->setVisible(m_visible);
+    }
+
 }
 

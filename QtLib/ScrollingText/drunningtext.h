@@ -4,6 +4,7 @@
 #include <QObject>
 #include <Inc/Label>
 #include <Inc/DBManager>
+#include "globals.h"
 
 class DRunningText : public DLabel
 {

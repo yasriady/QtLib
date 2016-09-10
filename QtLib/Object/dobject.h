@@ -16,8 +16,19 @@
 #include <QPixmap>
 #include <QPicture>
 //#include "../def.h"
-//#include <dsettings.h>
+//#include <Inc/Setting>
+#include "globals.h"
 #include <QFile>
+#include <QMessageBox>
+#include <QTimer>
+
+#define FN                          __PRETTY_FUNCTION__
+#define WARNINGCUSTOMINIT           "WARNING: customInit() was not called."
+
+// window setting
+#define OBJECTNAME(expr)            expr->objectName()
+#define GEOMETRY(expr)              APPNAME + "_" + OBJECTNAME(expr) + "_" + expr->property("windowName").toString() + "_geometry"
+#define STATE(expr)                 APPNAME + "_" + OBJECTNAME(expr) + "_" + expr->property("windowName").toString() + "_state"
 
 enum PIXMAPTYPE {
     Database,
@@ -26,15 +37,13 @@ enum PIXMAPTYPE {
 
 class QTLIBSHARED_EXPORT DObject
 {
+
 public:
     DObject();
 
     QStringList NumericConverter2(const int& n);
     const QString NumericConverter1(const int& n);
     const QString str(const int &i);
-
-private:
-//    const QString satuan[10] = {    "", "satu ", "dua ", "tiga ", "empat ", "lima ", "enam ", "tujuh ", "delapan ", "sembilan " };
 
 public:
     const QString   mkText   (const bool &enable);
@@ -45,9 +54,16 @@ public:
     //const QPixmap   mkPixmap ( PIXMAPTYPE pixmapType, const bool &connected);
 
     int mkRandom(const int low, const int high);
-    QString textFromFile(const QString &filename);
+    QString textFromFile(const QString &filename, const bool &createNew);
 
+    void toggleVisibility(QWidget *w);
+
+    void customInit(QWidget *w, const QString &objectName, const QString &windowTitle, const bool &createNewStylesheet);
 protected:
+    bool m_visible;
+    bool m_customInit;
+    void showWarning(const QString &caption, const QString &message);
+    void setStyleSheet2(QWidget *w, const bool &createNew, QString styleSheet="");
 
 };
 

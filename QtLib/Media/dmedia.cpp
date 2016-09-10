@@ -6,8 +6,8 @@ DMedia::DMedia(QWidget *parent) :
     ui(new Ui::DMedia)
 {
     ui->setupUi(this);
-    mkCONFIX;
-    if( confx->boolean(KEY("ToolBar"), true) )
+    //mkCONFIX;
+    if( m_confix->boolean(KEY1("ToolBar"), true) )
         ui->toolBar->show();
     else
         ui->toolBar->hide();
@@ -22,14 +22,14 @@ DMedia::~DMedia()
 void DMedia::runMedia()
 {
 
-    mkCONFIX;
+    //mkCONFIX;
 
     QString program;
     //program = "/usr/bin/mplayer";
     program = "/usr/bin/cvlc";
     //program = "/usr/bin/smplayer";
     QStringList arguments;
-    const QString &mediaFile = confx->string( KEY("mediaFile"), "" );
+    const QString &mediaFile = m_confix->string( KEY1("mediaFile"), "" );
     arguments << mediaFile;  //"/home/dedy/Videos/Movie/Doa-Anak/alif ba ta.mp4";
     //arguments << "/home/dedy/Videos/Movie/Upin_Ipin_Ikhlas_Dari_Hati.iso";
     //arguments << "/home/dedy/Videos/Movie/KungfuPanda.iso";
@@ -40,7 +40,7 @@ void DMedia::runMedia()
     process->setProgram(program);
     process->setArguments(arguments);
     process->start();
-    int sleepTime = confx->integr(KEY("sleepTimeToWait"), 500);
+    int sleepTime = m_confix->integr(KEY1("sleepTimeToWait"), 500);
     QThread::msleep(sleepTime);
 
 //    //WId wId = getWinId("mplayer2");
@@ -131,8 +131,8 @@ void DMedia::on_start_clicked()
 
 void DMedia::showEvent(QShowEvent */*event*/)
 {
-    mkCONFIX;
-    const bool &autoStart = confx->boolean( KEY("autoStart"), true );
+    //mkCONFIX;
+    const bool &autoStart = m_confix->boolean( KEY1("autoStart"), true );
     if( autoStart )
         runMedia();
 }

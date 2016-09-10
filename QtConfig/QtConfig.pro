@@ -16,12 +16,14 @@ TEMPLATE = lib
 DEFINES += QTCONFIG_LIBRARY
 
 SOURCES += qtconfig.cpp \
-    dsettings.cpp
+    dsettings.cpp \
+    globals.cpp
 
 HEADERS += qtconfig.h\
         qtconfig_global.h \
     dsettings.h \
-    def.h
+    def.h \
+    globals.h
 
 unix {
     target.path = /usr/lib

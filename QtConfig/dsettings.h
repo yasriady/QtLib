@@ -20,12 +20,14 @@
 #define CONFIGFILE                      APPDIR + SEP + "Extra" + SEP + APPNAME + ".ini"     //"config.ini"
 #define CONFIXFILE                      APPDIR + SEP + "Extra" + SEP + APPNAME + ".inx"     //"config.inx"
 
-#define mkCONFIX                        DSettings *confx = new DSettings(CONFIXFILE)
-#define mkCONFIG                        DSettings *confg = new DSettings(CONFIGFILE)
-#define KEY(expr)                       QString( objectName() ) + "/" + expr
+//#define mkCONFIX                        DSettings *confx = new DSettings(CONFIXFILE)
+//#define mkCONFIG                        DSettings *confg = new DSettings(CONFIGFILE)
+#define KEY1(expr)                      QString( objectName() ) + "/" + expr
 #define KEY2(expr)                      QString( metaObject()->className() ) + "/" + expr   // used by DBManager only
+#define KEY3(expr1, expr2)              QString( expr1->objectName() ) + "/" + expr2
 
-#define SHOWME(expr)                    mkCONFIX; bool show = confx->boolean( KEY(expr), true );    if( !show ) hide();
+#define GETBOOL(expr)                    bool show = m_confix->boolean( KEY3(this, expr), true );    if( !show ) hide();
+#define GETINT(expr)                     int currentIndex = m_confix->integr( KEY3(this, expr), 0 ); setCurrentIndex(currentIndex);
 
 class QTCONFIGSHARED_EXPORT DSettings : public QSettings
 {

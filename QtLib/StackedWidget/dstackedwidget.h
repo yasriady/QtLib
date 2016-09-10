@@ -2,7 +2,8 @@
 #define DSTACKEDWIDGET_H
 
 #include <QStackedWidget>
-#include <Inc/Setting>
+//#include <Inc/Setting>
+#include "globals.h"
 
 class DStackedWidget : public QStackedWidget
 {

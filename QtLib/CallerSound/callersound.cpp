@@ -26,11 +26,11 @@ void DCallerSound::call(const QStringList &list)
 
 void DCallerSound::playSomeSound()
 {
-    mkCONFIX;
+    //mkCONFIX;
     QSoundEffect *s = new QSoundEffect(this);
     connect(s, SIGNAL(playingChanged()), this, SLOT(soundPlayingChanged()) );
     QString str = m_strList[m_curIdx];
-    str = EXTRADIR + confx->string( KEY("audioDir"), "Audio/subdir" ) + SEP + str + ".wav";
+    str = EXTRADIR + m_confix->string( KEY1("audioDir"), "Audio/subdir" ) + SEP + str + ".wav";
     //qDebug() << str;
     s->setSource(QUrl::fromLocalFile(str));
     m_curIdx++;

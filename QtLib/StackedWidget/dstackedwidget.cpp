@@ -11,8 +11,10 @@ DStackedWidget::~DStackedWidget()
 
 void DStackedWidget::showEvent(QShowEvent *event)
 {
-    mkCONFIX;
-    int curIndex = confx->integr( KEY("stackedWidget"), 0);
-    setCurrentIndex(curIndex);
     QStackedWidget::showEvent(event);
+//    int curIndex = m_confix->integr( KEY1("currentIndex"), 0);
+//    setCurrentIndex(curIndex);
+
+    GETINT("currentIndex");
+
 }

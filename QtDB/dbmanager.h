@@ -20,15 +20,17 @@
 #include <QVector>
 #include <QJsonObject>
 #include <QDir>
-#include "../QtConfig/dsettings.h"
+//#include "../QtConfig/dsettings.h"
+#include "globals.h"
 #include <QSqlError>
 #include <QMetaObject>
+#include <QStringList>
 
-#define DRIVER_             confg->value("DB/DRIVER").toString()  //"QMYSQL"
-#define DBNAME_             confg->value("DB/NAME").toString()    //"Queue"
-#define DBSRV_              confg->value("DB/SRV").toString()     //"192.168.1.41"
-#define DBUSER_             confg->value("DB/USER").toString()    //"QueueUser"
-#define DBPWD_              confg->value("DB/PWD").toString()     //"QueueUserOnly"
+#define DRIVER_             m_config->value("DB/DRIVER").toString()  //"QMYSQL"
+#define DBNAME_             m_config->value("DB/NAME").toString()    //"Queue"
+#define DBSRV_              m_config->value("DB/SRV").toString()     //"192.168.1.41"
+#define DBUSER_             m_config->value("DB/USER").toString()    //"QueueUser"
+#define DBPWD_              m_config->value("DB/PWD").toString()     //"QueueUserOnly"
 
 #define M_DB                DB* m_db
 #define mkDB                m_db = new DB()
@@ -59,6 +61,7 @@ public:
     MyMap getRecord1(const QString &sql);
     MyVector getRecord2(const QString &sql);
     QJsonObject getRecord3(const QString &sql);
+    QList<QStringList*> getRecord5(const QString &sql);
 
     // update record
     void updateRecord(const QString &sql);

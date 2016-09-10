@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQTCONFIG_LIBRARY -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore -I. -I/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -49,9 +49,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = qtconfig.cpp \
-		dsettings.cpp 
+		dsettings.cpp \
+		globals.cpp 
 OBJECTS       = qtconfig.o \
-		dsettings.o
+		dsettings.o \
+		globals.o
 DIST          = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/common/unix.conf \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -204,8 +206,10 @@ DIST          = /opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/mkspecs/featur
 		QtConfig.pro qtconfig.h \
 		qtconfig_global.h \
 		dsettings.h \
-		def.h qtconfig.cpp \
-		dsettings.cpp
+		def.h \
+		globals.h qtconfig.cpp \
+		dsettings.cpp \
+		globals.cpp
 QMAKE_TARGET  = QtConfig
 DESTDIR       = 
 TARGET        = libQtConfig.so.1.0.0
@@ -555,8 +559,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents qtconfig.h qtconfig_global.h dsettings.h def.h $(DISTDIR)/
-	$(COPY_FILE) --parents qtconfig.cpp dsettings.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents qtconfig.h qtconfig_global.h dsettings.h def.h globals.h $(DISTDIR)/
+	$(COPY_FILE) --parents qtconfig.cpp dsettings.cpp globals.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -741,6 +745,127 @@ dsettings.o: dsettings.cpp dsettings.h \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
 		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dsettings.o dsettings.cpp
+
+globals.o: globals.cpp globals.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtGlobal \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobal.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qconfig.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfeatures.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtypetraits.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qisenum.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsysinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlogging.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qflags.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmutex.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnumeric.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qversiontagging.h \
+		dsettings.h \
+		qtconfig_global.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QSettings \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsettings.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qnamespace.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstring.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qchar.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrefcount.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qarraydata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qalgorithms.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiterator.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpair.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringlist.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qregexp.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmetatype.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qobject_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvariant.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdebug.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qhash.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qtextstream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qiodevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qlocale.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qshareddata.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qvector.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qpoint.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qset.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDir \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdir.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfile.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qfiledevice.h \
+		def.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QtDebug \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/QApplication \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcursor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qwidget.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qmargins.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpaintdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qrect.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpalette.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qcolor.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgb.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qrgba64.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qbrush.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qmatrix.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpolygon.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qregion.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatastream.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qline.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtransform.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpainterpath.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qimage.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixelformat.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qpixmap.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfont.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontmetrics.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qfontinfo.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qkeysequence.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qevent.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurl.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qurlquery.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qvector2d.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qtouchdevice.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QDateTime \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/qdatetime.h \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QMetaObject \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QFile \
+		/opt/dveltool/toolchain/ide/Qt/Qt5.7.0/5.7/gcc_64/include/QtCore/QString
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o globals.o globals.cpp
 
 ####### Install
 

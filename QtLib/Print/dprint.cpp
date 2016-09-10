@@ -24,8 +24,8 @@ DPrint::DPrint(QWidget *parent) :
     m_doc->setPageSize( m_printer->pageRect().size() );
     m_doc->setBaseUrl( EXTRADIR );
 
-    mkCONFIX;
-    if( confx->boolean(KEY("ToolBar"), true) )
+    //mkCONFIX;
+    if( m_confix->boolean(KEY1("ToolBar"), true) )
         ui->toolBar->show();
     else
         ui->toolBar->hide();

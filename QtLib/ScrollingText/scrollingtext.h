@@ -12,6 +12,7 @@
 #include "qtlib_global.h"
 #include "../Label/dlabel.h"
 #include <dbmanager.h>
+#include "globals.h"
 
 namespace Ui {
 class ScrollingText;

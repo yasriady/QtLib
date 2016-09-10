@@ -1,36 +1,35 @@
 #include "dwidget.h"
 
-
 DWidget::DWidget(QWidget *parent, Qt::WindowFlags f)
     :QWidget(parent, f)
 {
-
-}
-
-void DWidget::showEvent(QShowEvent *event)
-{
-    customInit();
-    setStyleSheet();
-    mkCONFIX;
-    const QByteArray &geometry = confx->value(GEOMETRY).toByteArray();
-    restoreGeometry(geometry);
-    updateGeometry();
-    QWidget::showEvent(event);
+    QTimer::singleShot( 50, this, SLOT(windowLoaded()));   // to generate warning if customInit() was not loaded
 }
 
 void DWidget::closeEvent(QCloseEvent *event)
 {
-    mkCONFIX;
-    confx->setValue( GEOMETRY, saveGeometry());
-    //confx->setValue( STATE, saveState());
+    //mkCONFIX;
+    m_confix->setValue( KEY3(this, "geometry"), saveGeometry());
     QWidget::closeEvent(event);
 }
 
-void DWidget::setStyleSheet(QString styleSheet)
+//void DWidget::resizeEvent(QResizeEvent *event)
+//{
+//    //__PF__;
+//    mkCONFIX;
+//    confx->setValue( KEY3(this, "geometry"), saveGeometry());
+//    QWidget::resizeEvent(event);
+//}
+
+void DWidget::windowLoaded()
 {
-    const QString &qssFile = EXTRADIR + "qss" + SEP + APPNAME + "_" + m_windowName + ".qss";
-    if( styleSheet=="" )
-        styleSheet = textFromFile(qssFile);
-    QWidget::setStyleSheet( styleSheet );
+    //__PF(objectName());
+    bool promotedWidget = ( metaObject()->className()!=objectName() );  // check if this is promoted widget or not
+    if( promotedWidget )
+    {
+        customInit(this, objectName(), windowTitle(), true);
+    } else {
+        if( !m_customInit ) showWarning( objectName() /*FN*/, WARNINGCUSTOMINIT);
+    }
 
 }

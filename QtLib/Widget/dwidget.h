@@ -13,21 +13,23 @@
 #include <QWidget>
 #include <Inc/Config>
 #include <Inc/Object>
-#include <Inc/Setting>
+//#include <Inc/Setting>
+#include "globals.h"
+#include <QTimer>
 
 class DWidget : public QWidget, public DObject
 {
     Q_OBJECT
 public:
     explicit DWidget(QWidget* parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
-
-    void setStyleSheet(QString styleSheet="");
+    void toggleVisibility() { DObject::toggleVisibility(this); }
 
 protected:
-    QString m_windowName;
-    virtual void customInit() = 0;
-    void showEvent(QShowEvent *event);
-    virtual void closeEvent(QCloseEvent *event);
+    void closeEvent(QCloseEvent *event);
+    //void resizeEvent(QResizeEvent *event);
+
+protected Q_SLOTS:
+    void windowLoaded();
 
 };
 

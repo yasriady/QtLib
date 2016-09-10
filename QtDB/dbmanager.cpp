@@ -7,18 +7,18 @@ DBManager::DBManager()
     //UNUSED(user1);
     //UNUSED(passwd1);
 
-    mkCONFIG;
+    //mkCONFIG;
     const QString &connectionName   = "db_" + QApplication::applicationName();
-//    const QString &driver           = confg->value("DB/DRIVER").toString();  //"QMYSQL"
-//    const QString &dbname           = confg->value("DB/NAME").toString();    //"Queue"
-//    const QString &hostname         = confg->value("DB/SRV").toString();     //"192.168.1.41"
-//    const QString &user             = confg->value("DB/USER").toString();    //"QueueUser"
-//    const QString &passwd           = confg->value("DB/PWD").toString();     //"QueueUserOnly"
-    const QString &driver           = confg->string( KEY2("driver") );
-    const QString &dbname           = confg->string( KEY2("dbname") );
-    const QString &hostname         = confg->string( KEY2("server") );
-    const QString &user             = confg->string( KEY2("username") );
-    const QString &passwd           = confg->string( KEY2("password") );
+//    const QString &driver           = m_config->value("DB/DRIVER").toString();  //"QMYSQL"
+//    const QString &dbname           = m_config->value("DB/NAME").toString();    //"Queue"
+//    const QString &hostname         = m_config->value("DB/SRV").toString();     //"192.168.1.41"
+//    const QString &user             = m_config->value("DB/USER").toString();    //"QueueUser"
+//    const QString &passwd           = m_config->value("DB/PWD").toString();     //"QueueUserOnly"
+    const QString &driver           = m_config->string( KEY2("driver") );
+    const QString &dbname           = m_config->string( KEY2("dbname") );
+    const QString &hostname         = m_config->string( KEY2("server") );
+    const QString &user             = m_config->string( KEY2("username") );
+    const QString &passwd           = m_config->string( KEY2("password") );
 
     SQLDRV sqlDrv = SQLDRV::NODRV;
 
@@ -171,6 +171,23 @@ QJsonObject DBManager::getRecord3(const QString &sql)
     }
 
     return myRcd;
+}
+
+QList<QStringList *> DBManager::getRecord5(const QString &sql)
+{
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery(sql, m_db);
+    for(int i=0; i<model->rowCount(); i++)
+    {
+        QSqlRecord sqlRcd = model->record(i);
+        for( int i=0; i<sqlRcd.count(); i++  ) {
+            QString fldName = sqlRcd.fieldName(i);
+            QString fldValue = sqlRcd.value(i).toString();
+//            myFld[fldName] = fldValue;
+        }
+//        myRcd[ QString::number(i) ] = myFld;
+    }
+
 }
 
 void DBManager::updateRecord(const QString &sql)

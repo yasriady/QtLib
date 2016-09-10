@@ -28,6 +28,7 @@ void DLabel::paintEvent(QPaintEvent *event)
         //factor = xFactor < yFactor ? xFactor : yFactor;
         //factor =  factor * 1.0;
     }
+    factor = 0.975 * factor;
 
     QFont f = painter.font();
     f.setPointSizeF(f.pointSizeF()*factor);

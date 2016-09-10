@@ -14,6 +14,8 @@
 #include <Object/dobject.h>
 #include <QDir>
 #include <Config>
+#include <QTimer>
+#include "globals.h"
 
 namespace Ui {
 class DMainWindow;
@@ -28,15 +30,17 @@ public:
     virtual ~DMainWindow();
 
 private:
-    Ui::DMainWindow *ui;
-    void setStyleSheet(QString styleSheet="");
+    //Ui::DMainWindow *ui;
+    //void setStyleSheet(QString styleSheet="");
 
 protected:
     QString m_windowName;
-    virtual void customInit() = 0;
-    virtual void closeEvent(QCloseEvent *event);
-    virtual void showEvent(QShowEvent *event);
+    void closeEvent(QCloseEvent *event);
+    //void resizeEvent(QResizeEvent *event);
 
+protected Q_SLOTS:
+    void windowLoaded();
+    //void customInit( const QString &objectName, const QString &windowTitle );
 
 };
 
